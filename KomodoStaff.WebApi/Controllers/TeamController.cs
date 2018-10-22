@@ -1,4 +1,5 @@
-﻿using KomodoStaff.Services;
+﻿using KomodoStaff.Models;
+using KomodoStaff.Services;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,53 +12,57 @@ namespace KomodoStaff.WebApi.Controllers
 {
     public class TeamController : ApiController
     {
-        //    public IHttpActionResult GetAll()
-        //    {
-        //        TeamService teamService = CreateTeamService();
-        //        var notes = teamService.GetTeams();
-        //        return Ok(teams);
-        //    }
-        //    public IHttpActionResult Get(int id)
-        //    {
-        //        TeamService teamService = CreateTeamService();
-        //        var note = teamService.GetNoteById(id);
-        //        return Ok(team);
-        //    }
-        //    public IHttpActionResult Post(TeamCreate note)
-        //    {
-        //        if (!ModelState.IsValid)
-        //            return BadRequest(ModelState);
+        public IHttpActionResult GetAll()
+        {
+            TeamService teamService = CreateTeamService();
+            var teams = teamService.GetTeams();
+            return Ok(teams);
+        }
+        
+        public IHttpActionResult Get(int id)
+        {
+            TeamService teamservice = CreateTeamService();
+            var team = teamservice.GetTeamById(id);
+            return Ok(team);
+        }
+                 
 
-        //        var service = CreateTeamService();
+         public IHttpActionResult Post(TeamCreate team)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        //        if (!service.CreateTeam(team))
-        //            return InternalServerError();
-        //        return Ok();
-        //    }
+            var service = CreateTeamService();
 
-        //    public IHttpActionResult Put(TeamEdit note)
-        //    {
-        //        if (!ModelState.IsValid)
-        //            return BadRequest(ModelState);
+            if (!service.CreateTeam(team))
+                return InternalServerError();
+            return Ok();
 
-        //        var service = CreateTeamService();
+        }
 
-        //        if (!service.UpdateTeam(team))
-        //            return InternalServerError();
+        public IHttpActionResult Put(TeamEdit team)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-        //        return Ok();
-        //    }
+            var service = CreateTeamService();
+
+            if (!service.UpdateTeam(team))
+               return InternalServerError();
+
+            return Ok();
+        }
 
 
-        //    public IHttpActionResult Delete(int id)
-        //    {
-        //        var service = CreateTeamService();
+        public IHttpActionResult Delete(int id)
+        {
+            var service = CreateTeamService();
 
-        //        if (!service.DeleteTeam(id))
-        //            return InternalServerError();
+            if (!service.DeletTeam(id))
+                return InternalServerError();
 
-        //        return Ok();
-        //    }
+            return Ok();
+        }
         private TeamService CreateTeamService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());

@@ -343,6 +343,10 @@
       <Project>{29B43A59-8007-4704-B3C6-392092F804E1}</Project>
       <Name>KoimodoStaff.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\KomodoStaff.Models\KomodoStaff.Models.csproj">
+      <Project>{99696A5F-E4C7-4BFD-BD82-442908387649}</Project>
+      <Name>KomodoStaff.Models</Name>
+    </ProjectReference>
     <ProjectReference Include="..\KomodoStaff.Services\KomodoStaff.Services.csproj">
       <Project>{5E7F89DC-CA88-4FD1-8440-26D1F6FDE7F0}</Project>
       <Name>KomodoStaff.Services</Name>

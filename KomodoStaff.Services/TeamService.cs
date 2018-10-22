@@ -32,5 +32,24 @@ namespace KomodoStaff.Services
             }
         }
 
+        public object GetTeams()
+        {
+            throw new NotImplementedException();
+        }
+
+        public object GetTeamById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateTeam(object team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeletTeam(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
