@@ -61,5 +61,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KoimodoStaff.Data\KoimodoStaff.Data.csproj">
+      <Project>{29B43A59-8007-4704-B3C6-392092F804E1}</Project>
+      <Name>KoimodoStaff.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KomodoStaff.Models\KomodoStaff.Models.csproj">
+      <Project>{99696A5F-E4C7-4BFD-BD82-442908387649}</Project>
+      <Name>KomodoStaff.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
