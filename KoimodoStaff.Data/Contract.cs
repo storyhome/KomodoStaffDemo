@@ -14,7 +14,8 @@ namespace KoimodoStaff.Data
         public int ContractId { get; set; }
         public int DeveloperId{ get; set; }
         public int TeamId { get; }
+        public virtual Developer Developer { get; set;}
         public DateTime StartDate { get; set; }
-        public DateTime dateTime { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }
