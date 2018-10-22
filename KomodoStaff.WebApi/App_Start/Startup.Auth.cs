@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using KomodoStaff.WebApi.Providers;
 using KomodoStaff.WebApi.Models;
+using KomodoStaff.Data;
 
 namespace KomodoStaff.WebApi
 {

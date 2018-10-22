@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using KomodoStaff.WebApi.Models;
 using KomodoStaff.WebApi.Providers;
 using KomodoStaff.WebApi.Results;
+using KomodoStaff.Data;
 
 namespace KomodoStaff.WebApi.Controllers
 {
