@@ -11,11 +11,58 @@ namespace KomodoStaff.WebApi.Controllers
 {
     public class TeamController : ApiController
     {
+        //    public IHttpActionResult GetAll()
+        //    {
+        //        TeamService teamService = CreateTeamService();
+        //        var notes = teamService.GetTeams();
+        //        return Ok(teams);
+        //    }
+        //    public IHttpActionResult Get(int id)
+        //    {
+        //        TeamService teamService = CreateTeamService();
+        //        var note = teamService.GetNoteById(id);
+        //        return Ok(team);
+        //    }
+        //    public IHttpActionResult Post(TeamCreate note)
+        //    {
+        //        if (!ModelState.IsValid)
+        //            return BadRequest(ModelState);
+
+        //        var service = CreateTeamService();
+
+        //        if (!service.CreateTeam(team))
+        //            return InternalServerError();
+        //        return Ok();
+        //    }
+
+        //    public IHttpActionResult Put(TeamEdit note)
+        //    {
+        //        if (!ModelState.IsValid)
+        //            return BadRequest(ModelState);
+
+        //        var service = CreateTeamService();
+
+        //        if (!service.UpdateTeam(team))
+        //            return InternalServerError();
+
+        //        return Ok();
+        //    }
+
+
+        //    public IHttpActionResult Delete(int id)
+        //    {
+        //        var service = CreateTeamService();
+
+        //        if (!service.DeleteTeam(id))
+        //            return InternalServerError();
+
+        //        return Ok();
+        //    }
         private TeamService CreateTeamService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var teamService = new TeamService(userId);
             return teamService;
         }
+        }
     }
-}
