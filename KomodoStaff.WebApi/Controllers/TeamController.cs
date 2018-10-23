@@ -1,4 +1,5 @@
 ﻿using KomodoStaff.Models;
+using KomodoStaff.Models.Team;
 using KomodoStaff.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -58,7 +59,7 @@ namespace KomodoStaff.WebApi.Controllers
         {
             var service = CreateTeamService();
 
-            if (!service.DeletTeam(id))
+            if (!service.DeleteTeam(id))
                 return InternalServerError();
 
             return Ok();

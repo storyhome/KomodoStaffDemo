@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KoimodoStaff.Data
+namespace KomodoStaff.Models.Contract
 {
-   
-    public class Contract
+    public class ContractEdit
     {
-        [Key]
         public int ContractId { get; set; }
-        public int DeveloperId{ get; set; }
+        public int DeveloperId { get; set; }
         public int TeamId { get; set; }
-        public virtual Developer Developer { get; set;}
-        public virtual Team Team { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
     }
 }

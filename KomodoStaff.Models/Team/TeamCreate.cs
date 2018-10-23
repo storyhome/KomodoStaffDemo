@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace KomodoStaff.Models
+namespace KomodoStaff.Models.Team
 {
-    public class TeamEdit
+   public class TeamCreate
     {
-        public int TeamId { get; set; }
         public string Name { get; set; }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KomodoStaff.Models
+namespace KomodoStaff.Models.Team
 {
-    public class TeamListItem
+    public class TeamEdit
     {
         public int TeamId { get; set; }
         public string Name { get; set; }

@@ -1,6 +1,7 @@
 ﻿using KoimodoStaff.Data;
 using KomodoStaff.Data;
 using KomodoStaff.Models;
+using KomodoStaff.Models.Team;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,24 +33,66 @@ namespace KomodoStaff.Services
             }
         }
 
-        public object GetTeams()
+        public IEnumerable<TeamListItem> GetTeams()
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                      .Teams
+                      .Select(
+                        e =>
+                            new TeamListItem
+                            {
+                                TeamId = e.TeamId,
+                                Name = e.Name
+                            }
+                       );
+                return query.ToArray();
+            }
         }
 
-        public object GetTeamById(int id)
+        public TeamDetail GetTeamById(int teamId)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                      .Teams
+                      .Single(e => e.TeamId == teamId);
+                return
+                   new TeamDetail
+                   {
+                       TeamId = entity.TeamId,
+                       Name = entity.Name
+                   };
+            }
         }
 
-        public bool UpdateTeam(object team)
+        public bool UpdateTeam(TeamEdit model)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                      ctx
+                      .Teams
+                      .Single(e => e.TeamId == model.TeamId);
+                entity.Name = model.Name;
+                return ctx.SaveChanges() == 1;
+            }
         }
 
-        public bool DeletTeam(int id)
+        public bool DeleteTeam(int teamId)
         {
-            throw new NotImplementedException();
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                      .Teams
+                      .Single(e => e.TeamId == teamId);
+                ctx.Teams.Remove(entity);
+                return ctx.SaveChanges() == 1;
+            }
         }
     }
 }

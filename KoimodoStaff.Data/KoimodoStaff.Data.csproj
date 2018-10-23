@@ -56,12 +56,29 @@
     <Compile Include="Contract.cs" />
     <Compile Include="Developer.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\201810221437233_InitialCreate.cs" />
+    <Compile Include="Migrations\201810221437233_InitialCreate.Designer.cs">
+      <DependentUpon>201810221437233_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810231533096_UpdateContractTbl.cs" />
+    <Compile Include="Migrations\201810231533096_UpdateContractTbl.Designer.cs">
+      <DependentUpon>201810231533096_UpdateContractTbl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Team.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810221437233_InitialCreate.resx">
+      <DependentUpon>201810221437233_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810231533096_UpdateContractTbl.resx">
+      <DependentUpon>201810231533096_UpdateContractTbl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
