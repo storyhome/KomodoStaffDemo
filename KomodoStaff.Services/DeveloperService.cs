@@ -8,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KomodoStaff.Services
+namespace KomodoStaff.Contracts
 {
-   public class DeveloperService
+   public class DeveloperService : IDeveloperService
     {
         private readonly Guid _userId;
 

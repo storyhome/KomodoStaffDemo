@@ -53,12 +53,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IContractService.cs" />
+    <Compile Include="IDeveloperService.cs" />
+    <Compile Include="ITeamService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KomodoStaff.Models\KomodoStaff.Models.csproj">
+      <Project>{99696A5F-E4C7-4BFD-BD82-442908387649}</Project>
+      <Name>KomodoStaff.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using KomodoStaff.Services;
+using KomodoStaff.Contracts;
 using Microsoft.AspNet.Identity;
 
 namespace KomodoStaff.WebApi.Controllers

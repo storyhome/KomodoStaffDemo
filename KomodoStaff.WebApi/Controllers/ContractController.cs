@@ -1,5 +1,5 @@
 ﻿using KomodoStaff.Models.Contract;
-using KomodoStaff.Services;
+using KomodoStaff.Contracts;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;

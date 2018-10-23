@@ -1,4 +1,5 @@
 ﻿using KoimodoStaff.Data;
+using KomodoStaff.Contracts;
 using KomodoStaff.Data;
 using KomodoStaff.Models.Contract;
 using System;
@@ -7,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KomodoStaff.Services
+namespace KomodoStaff.Contracts
 {
-    public class ContractService
+    public class ContractService : IContractService
     {
         private Guid userId;
 
