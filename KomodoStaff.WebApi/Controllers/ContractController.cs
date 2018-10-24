@@ -12,29 +12,38 @@ namespace KomodoStaff.WebApi.Controllers
 {
     public class ContractController : ApiController
     {
+        private IContractService _contractService;
+
+        public ContractController() { }
+      
+        public ContractController(IContractService mockService)
+        {
+            _contractService = mockService;
+        }
         public IHttpActionResult GetAll()
         {
-            ContractService contractService = CreateContractService();
-            var contracts = contractService.GetContracts();
+            
+            var contracts = _contractService.GetContracts();
             return Ok(contracts);
         }
 
         public IHttpActionResult Get(int id)
         {
-            ContractService contractservice = CreateContractService();
-            var contract = contractservice.GetContractById(id);
+            PopulateContractService();
+           
+            var contract = _contractService.GetContractById(id);
             return Ok(contract);
         }
 
 
         public IHttpActionResult Post(ContractCreate contract)
         {
+            PopulateContractService();
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateContractService();
-
-            if (!service.CreateContract(contract))
+            if (!_contractService.CreateContract(contract))
                 return InternalServerError();
             return Ok();
 
@@ -42,12 +51,12 @@ namespace KomodoStaff.WebApi.Controllers
 
         public IHttpActionResult Put(ContractEdit contract)
         {
+            PopulateContractService();
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateContractService();
-
-            if (!service.UpdateContract(contract))
+            if (!_contractService.UpdateContract(contract))
                 return InternalServerError();
 
             return Ok();
@@ -56,19 +65,21 @@ namespace KomodoStaff.WebApi.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateContractService();
-
-            if (!service.DeleteContract(id))
+            PopulateContractService();
+           
+            if (!_contractService.DeleteContract(id))
                 return InternalServerError();
 
             return Ok();
         }
-        private ContractService CreateContractService()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var contractService = new ContractService(userId);
-            return contractService;
-        }
 
+        private void PopulateContractService()
+        {
+            if (_contractService == null)
+            {
+                var userId = Guid.Parse(User.Identity.GetUserId());
+                _contractService = new ContractService(userId);
+            }
+        }
     }
 }

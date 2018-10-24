@@ -13,43 +13,52 @@ namespace KomodoStaff.WebApi.Controllers
 {
     public class TeamController : ApiController
     {
+        private ITeamService _teamService;
+
+        public TeamController() { }
+        public TeamController(ITeamService mockService)
+        {
+            _teamService = mockService;
+        }
+
         public IHttpActionResult GetAll()
         {
-            TeamService teamService = CreateTeamService();
-            var teams = teamService.GetTeams();
+            var teams = _teamService.GetTeams();
             return Ok(teams);
         }
-        
+
         public IHttpActionResult Get(int id)
         {
-            TeamService teamservice = CreateTeamService();
-            var team = teamservice.GetTeamById(id);
+            PopulateTeamService();
+
+            var team = _teamService.GetTeamById(id);
             return Ok(team);
         }
-                 
 
-         public IHttpActionResult Post(TeamCreate team)
+        public IHttpActionResult Post(TeamCreate team)
         {
+            PopulateTeamService();
+
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateTeamService();
-
-            if (!service.CreateTeam(team))
+            if (!_teamService.CreateTeam(team))
                 return InternalServerError();
             return Ok();
 
         }
 
         public IHttpActionResult Put(TeamEdit team)
-        {
+        { 
+            PopulateTeamService();
+       
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = CreateTeamService();
+           
 
-            if (!service.UpdateTeam(team))
-               return InternalServerError();
+            if (!_teamService.UpdateTeam(team))
+                return InternalServerError();
 
             return Ok();
         }
@@ -57,18 +66,20 @@ namespace KomodoStaff.WebApi.Controllers
 
         public IHttpActionResult Delete(int id)
         {
-            var service = CreateTeamService();
-
-            if (!service.DeleteTeam(id))
+            PopulateTeamService();
+                        
+            if (!_teamService.DeleteTeam(id))
                 return InternalServerError();
 
             return Ok();
         }
-        private TeamService CreateTeamService()
+        private void PopulateTeamService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var teamService = new TeamService(userId);
-            return teamService;
-        }
+            if (_teamService == null)
+            {
+                var userId = Guid.Parse(User.Identity.GetUserId());
+                _teamService = new TeamService(userId);
+            }
         }
     }
+}
